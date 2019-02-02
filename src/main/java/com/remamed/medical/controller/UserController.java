@@ -21,7 +21,7 @@ public class UserController {
     private UserService userService;
 
     /**
-     * @Description 用户注册信息的请求方法gittest
+     * @Description 用户注册信息的请求方法
      * @Date 2019-01-31
      * @Param [user]
      * @return com.remamed.medical.util.RespResult
@@ -46,7 +46,7 @@ public class UserController {
     }
     
     /***
-     * @Description 用户登录验证gittest
+     * @Description 用户登录验证
      * @Date 2019-01-31
      * @Param [name, password, req]
      * @return com.remamed.medical.util.RespResult
