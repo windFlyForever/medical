@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.remamed.medical.mapper.UserEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.remamed.medical.entity.UserEntity" >
+    <id column="md_user_id" property="mdUserId" jdbcType="INTEGER" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="vld" property="vld" jdbcType="VARCHAR" />
+    <result column="modify_user" property="modifyUser" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <insert id="insert" parameterType="com.remamed.medical.entity.UserEntity" >
+    insert into medical_user (md_user_id, real_name, login_name, 
+      password, address, telephone,
+       create_time, update_time,
+      vld, modify_user,birthday)
+    values (#{mdUserId,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+      #{vld,jdbcType=VARCHAR}, #{modifyUser,jdbcType=VARCHAR},#{birthday})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.remamed.medical.entity.UserEntity" >
+    update medical_user
+    set real_name = #{realName,jdbcType=VARCHAR},
+      login_name = #{loginName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      vld = #{vld,jdbcType=VARCHAR},
+      modify_user = #{modifyUser,jdbcType=VARCHAR}
+      birthday = #{birthday}
+    where md_user_id = #{mdUserId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select md_user_id, real_name, login_name, password, address, telephone,
+    create_time, update_time, vld, modify_user,birthday
+    from medical_user
+    where md_user_id = #{mdUserId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select md_user_id, real_name, login_name, password, address, telephone,
+    create_time, update_time, vld, modify_user,birthday
+    from medical_user
+  </select>
+  <select id="selectByLoginNameOrTelephone" resultType="com.remamed.medical.entity.UserEntity">
+    select md_user_id, real_name, login_name, password, address, telephone,
+    create_time, update_time, vld, modify_user,birthday
+    from medical_user where password=#{password} and (login_name=#{name} or telephone=#{name} )
+  </select>
+
+  <select id="findUserByLoginName" resultType="com.remamed.medical.entity.UserEntity">
+
+    select md_user_id, real_name, login_name, password, address, telephone,
+    create_time, update_time, vld, modify_user,birthday
+    from medical_user where login_name=#{loginName}
+
+  </select>
+  <select id="findUserByTelephone" resultType="com.remamed.medical.entity.UserEntity">
+    select md_user_id, real_name, login_name, password, address, telephone,
+    create_time, update_time, vld, modify_user,birthday
+    from medical_user where telephone=#{telephone}
+
+  </select>
+</mapper>

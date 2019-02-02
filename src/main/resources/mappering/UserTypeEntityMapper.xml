@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.remamed.medical.mapper.UserTypeEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.remamed.medical.entity.UserTypeEntity" >
+    <id column="user_type_id" property="userTypeId" jdbcType="INTEGER" />
+    <result column="type_code" property="typeCode" jdbcType="VARCHAR" />
+    <result column="type_name" property="typeName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="vld" property="vld" jdbcType="VARCHAR" />
+    <result column="modify_user" property="modifyUser" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.remamed.medical.entity.UserTypeEntity" >
+    insert into medical_user_type (user_type_id, type_code, type_name, 
+      create_time, update_time, vld, 
+      modify_user)
+    values (#{userTypeId,jdbcType=INTEGER}, #{typeCode,jdbcType=VARCHAR}, #{typeName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{vld,jdbcType=VARCHAR}, 
+      #{modifyUser,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.remamed.medical.entity.UserTypeEntity" >
+    update medical_user_type
+    set type_code = #{typeCode,jdbcType=VARCHAR},
+      type_name = #{typeName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      vld = #{vld,jdbcType=VARCHAR},
+      modify_user = #{modifyUser,jdbcType=VARCHAR}
+    where user_type_id = #{userTypeId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select user_type_id, type_code, type_name, create_time, update_time, vld, modify_user
+    from medical_user_type
+    where user_type_id = #{userTypeId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select user_type_id, type_code, type_name, create_time, update_time, vld, modify_user
+    from medical_user_type
+  </select>
+
+</mapper>

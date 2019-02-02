@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.remamed.medical.mapper.AreaMapper" >
+  <resultMap id="BaseResultMap" type="com.remamed.medical.entity.Area" >
+    <id column="area_id" property="areaId" jdbcType="INTEGER" />
+    <result column="area_code" property="areaCode" jdbcType="VARCHAR" />
+    <result column="area_name" property="areaName" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="TINYINT" />
+    <result column="city_code" property="cityCode" jdbcType="VARCHAR" />
+    <result column="center" property="center" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="vld" property="vld" jdbcType="VARCHAR" />
+    <result column="modify_user" property="modifyUser" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <insert id="insert" parameterType="com.remamed.medical.entity.Area" >
+    insert into area (area_id, area_code, area_name, 
+      level, city_code, center, 
+      parent_id, create_time, update_time, 
+      vld, modify_user)
+    values (#{areaId,jdbcType=INTEGER}, #{areaCode,jdbcType=VARCHAR}, #{areaName,jdbcType=VARCHAR}, 
+      #{level,jdbcType=TINYINT}, #{cityCode,jdbcType=VARCHAR}, #{center,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{vld,jdbcType=VARCHAR}, #{modifyUser,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.remamed.medical.entity.Area" >
+    update area
+    set area_code = #{areaCode,jdbcType=VARCHAR},
+      area_name = #{areaName,jdbcType=VARCHAR},
+      level = #{level,jdbcType=TINYINT},
+      city_code = #{cityCode,jdbcType=VARCHAR},
+      center = #{center,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      vld = #{vld,jdbcType=VARCHAR},
+      modify_user = #{modifyUser,jdbcType=VARCHAR}
+    where area_id = #{areaId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select area_id, area_code, area_name, level, city_code, center, parent_id, create_time, 
+    update_time, vld, modify_user
+    from area
+    where area_id = #{areaId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select area_id, area_code, area_name, level, city_code, center, parent_id, create_time, 
+    update_time, vld, modify_user
+    from area
+  </select>
+  <select id="findAreasByParentId" resultMap="BaseResultMap">
+    select area_id, area_code, area_name, level, city_code, center, parent_id, create_time,
+    update_time, vld, modify_user
+    from area where parent_id=#{parentId}
+  </select>
+
+</mapper>
