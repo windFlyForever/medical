@@ -23,7 +23,7 @@ public class UserController {
     /**
      * @Description 用户注册信息的请求方法
      * @Date 2019-01-31
-     * @Param [JIfeng]
+     * @Param [user]
      * @return com.remamed.medical.util.RespResult
      **/
     @RequestMapping(value = "/registerUser")
