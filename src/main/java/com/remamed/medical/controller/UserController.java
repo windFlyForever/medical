@@ -26,7 +26,7 @@ public class UserController {
      * @Param [user]
      * @return com.remamed.medical.util.RespResult
      **/
-    @RequestMapping(value = "/registerUser")
+    @RequestMapping(value = "/registerUser",method = RequestMethod.POST)
     public RespResult registerUser(UserEntity user){
         RespResult result=null;
         try {
