@@ -46,7 +46,7 @@ public class UserController {
     }
     
     /***
-     * @Description 用户登录验证
+     * @Description 用户登录验证gittest
      * @Date 2019-01-31
      * @Param [name, password, req]
      * @return com.remamed.medical.util.RespResult
