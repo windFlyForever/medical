@@ -83,7 +83,7 @@ public class UserController {
     }
 
     /**
-     * @Description 查找注册手机号是否已存在
+     * @Description 查找注册手 机号是否已存在
      * @Date 2019-01-31
      * @Param [telephone]
      * @return com.remamed.medical.util.RespResult
