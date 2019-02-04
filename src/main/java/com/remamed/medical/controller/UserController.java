@@ -1,6 +1,7 @@
 package com.remamed.medical.controller;
 
 
+import com.github.pagehelper.PageHelper;
 import com.remamed.medical.dict.CommonDict;
 import com.remamed.medical.entity.UserEntity;
 import com.remamed.medical.service.UserService;
@@ -83,14 +84,14 @@ public class UserController {
     }
 
     /**
-     * @Description 查找注册手 机号是否已存在
+     * @Description 查找注册手机号是否已存在
      * @Date 2019-01-31
      * @Param [telephone]
      * @return com.remamed.medical.util.RespResult
      **/
     @RequestMapping("/findTelephone")
     public RespResult findUserByTelephone(String telephone){
-
+        
         RespResult result=new RespResult("");
         UserEntity user=userService.findUserByTelephone(telephone);
         if(user!=null){
