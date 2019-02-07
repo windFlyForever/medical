@@ -71,6 +71,15 @@ pagehelper:
   params: count=countSql
 
 
+logging:
+  level:
+    com:
+      remamed:
+        medical:
+          mapper: debug
+
+
+
 
 
 

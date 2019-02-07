@@ -58,7 +58,7 @@ spring:
 
 server:
   context-path: /medicalUser/api
-  port: 80
+  port: 8081
 
 
 mybatis:

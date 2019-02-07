@@ -8,6 +8,7 @@ import com.remamed.medical.service.UserService;
 import com.remamed.medical.util.RespResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +29,7 @@ public class UserController {
      * @return com.remamed.medical.util.RespResult
      **/
     @RequestMapping(value = "/registerUser",method = RequestMethod.POST)
-    public RespResult registerUser(UserEntity user){
+    public RespResult registerUser(@RequestBody UserEntity user){
         RespResult result=null;
         try {
             UserEntity u=userService.findUserByTelephone(user.getTelephone());
