@@ -15,7 +15,7 @@ public class MedicalProApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(MedicalProApplication.class, args);
-		logger.info("项目启动成功-------------------trr");
+		logger.info("--------项目启动成功--------");
 	}
 
 }
